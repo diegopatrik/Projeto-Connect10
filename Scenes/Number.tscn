@@ -1,15 +1,18 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Number.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Number.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/1.png" type="Texture" id=2]
 
 [node name="Number" type="Node2D"]
 
+position = Vector2( 32, 32 )
+z_index = 1
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
 
 [node name="Sprite" type="Sprite" parent="." index="0"]
 
-position = Vector2( 501.978, 287.039 )
 texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 

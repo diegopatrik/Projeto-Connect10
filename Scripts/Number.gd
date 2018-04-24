@@ -7,13 +7,10 @@ extends Node2D
 var number
 var value
 
-func _init():
+func _ready():
 	randomize()
 	number = int( rand_range(0,9) )
 	value = number
-
-func _ready():
-	
 	$Sprite.set("texture", load("res://Sprites/" + str(number) + ".png"))
 	
 

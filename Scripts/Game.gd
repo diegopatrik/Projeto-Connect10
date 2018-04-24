@@ -10,10 +10,10 @@ func _ready():
 	
 	for x in range(1,9):
 		for i in range(1,9):
-			print(str(x) +  " e " + str(i))
 			var node = number.instance()
+			node.position = $Grid.map_to_world(Vector2(x,i)) + Vector2(32,32)
+			print("Pos: " + str(node.position))
 			$Grid.add_child(node)
-			node.position = $Grid.map_to_world( Vector2(x,i))
 			
 			
 		
