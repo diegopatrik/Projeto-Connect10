@@ -10,33 +10,15 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="Number" type="Node2D"]
+[node name="Number" type="Node2D" index="0"]
 
 position = Vector2( 32, 32 )
 z_index = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform", "Z Index" ]
+_sections_unfolded = [ "Applied Forces", "Linear", "Transform", "Visibility", "Z Index" ]
 
-[node name="NumberSprite" type="Sprite" parent="." index="0"]
+[node name="Area2D" type="Area2D" parent="." index="0"]
 
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="Selected" type="Sprite" parent="." index="1"]
-
-visible = false
-texture = ExtResource( 3 )
-_sections_unfolded = [ "Visibility" ]
-
-[node name="SelectedNow" type="Sprite" parent="." index="2"]
-
-visible = false
-texture = ExtResource( 4 )
-_sections_unfolded = [ "Visibility" ]
-
-[node name="Area2D" type="Area2D" parent="." index="3"]
-
-editor/display_folded = true
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -51,8 +33,36 @@ position = Vector2( -0.199579, -0.0350819 )
 scale = Vector2( 3.16718, 3.16718 )
 shape = SubResource( 1 )
 
+[node name="NumberSprite" type="Sprite" parent="Area2D" index="1"]
+
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform", "Visibility", "Z Index" ]
+
+[node name="Selected" type="Sprite" parent="Area2D" index="2"]
+
+visible = false
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="SelectedNow" type="Sprite" parent="Area2D" index="3"]
+
+visible = false
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Effect" type="Tween" parent="." index="1"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
 [connection signal="mouse_entered" from="Area2D" to="." method="_mouse_entered"]
 
 [connection signal="mouse_exited" from="Area2D" to="." method="_mouse_exited"]
+
+[connection signal="tween_completed" from="Effect" to="." method="_on_Effect_tween_completed"]
 
 
