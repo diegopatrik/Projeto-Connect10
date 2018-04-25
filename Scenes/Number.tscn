@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scripts/Number.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/1.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/5.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/up.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/up2.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
 
 [node name="Number" type="Node2D"]
 
@@ -10,9 +17,42 @@ z_index = 1
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform", "Z Index" ]
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="NumberSprite" type="Sprite" parent="." index="0"]
 
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="Selected" type="Sprite" parent="." index="1"]
+
+visible = false
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="SelectedNow" type="Sprite" parent="." index="2"]
+
+visible = false
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="Area2D" type="Area2D" parent="." index="3"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+position = Vector2( -0.199579, -0.0350819 )
+scale = Vector2( 3.16718, 3.16718 )
+shape = SubResource( 1 )
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_mouse_entered"]
+
+[connection signal="mouse_exited" from="Area2D" to="." method="_mouse_exited"]
 
 
