@@ -10,7 +10,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="Number" type="Node2D" index="0"]
+[node name="Number" type="Node2D"]
 
 position = Vector2( 32, 32 )
 z_index = 1

@@ -30,9 +30,12 @@ func _total():
 		$HUD.get_node("Message").text = "Uhuuu 10!!!"
 		
 		for i in $Grid.get_children():
-			if i.is_clicked:
-				total_selected += 1
+			if i.is_clicked and not i.flag:
 				i._play_anim()
+				total_selected += 1
+			elif i.is_clicked and i.flag:
+				i.queue_free()
+				total_selected += 1
 		
 		Global.score += total_selected * 10
 		
